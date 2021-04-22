@@ -1,17 +1,11 @@
-package app;
-
-import java.awt.Button;
 import java.awt.Component;
 import java.lang.Object;
-import java.util.Optional;
-import javax.swing.table.*;
 
 import javax.swing.event.TableModelEvent;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.util.List;
-
 import java.util.ArrayList;
 
 
@@ -19,8 +13,6 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
     private List<Sale> inclomeList;
   //
     private List<Sale> expenseList;
-    private GestUsersDAO salesdb=new GestUsersDAO();
-
 
 
 
@@ -72,11 +64,6 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
 
             case 7:
             	return "Total";
-            case 8: 
-            	return "ID";
-            case 9: 
-            	return "delete";
-
          /*   case 8:
             	return "Tax";
 
@@ -101,8 +88,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 10;
-
+        return 8;
     }
 
     @Override
@@ -118,12 +104,6 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
         }*/
 
         switch (column) {
-      /*  Button b=new Button("Click Here");  
-        b.setBounds(50,100,80,30);  
-        f.add(b);  
-        f.setSize(400,400);  
-        f.setLayout(null);  
-        f.setVisible(true);   */
             case 0: return inclome != null ? inclome.getDate() : "";
             case 1: return inclome != null ? inclome.getProduct() : "";
             case 2: return inclome != null ? inclome.getAmt() : "";
@@ -132,11 +112,6 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
             case 5: return inclome != null ? inclome.getRegion() : "";
             case 6: return inclome  != null ? inclome.getTax() : "";
             case 7: return inclome != null ? inclome.getTotal() : "";
-            case 8: return inclome != null ? inclome.getId() : "";
-
-            case 9: return "fasakh l ham";
-
-
            // case 8: return expense != null ? inclome.getTotal() : "";
 
 
@@ -144,6 +119,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
 
         return null;
     }
+
 
 @Override
 public void setValueAt(Object value, int row, int col)
@@ -168,38 +144,9 @@ public void setValueAt(Object value, int row, int col)
 
     if (col==7)
     	sale.setTotal((double)value);
-    if (col==8)
-    	
-    {   System.out.println(sale.getId());
-    	salesdb.deleteSale(sale.getId());
 
-    	inclomeList.remove(row);
-    	}
-    else {
-    if (row>=inclomeList.size()-1)
-    {
-    sale.setId(inclomeList.get(0).getId()+1);
-
-    	//	System.out.println(inclomeList.get(inclomeList.size()-1).getId()+1);
-  salesdb.addSale(sale.getId(),Optional.ofNullable(sale.getProduct()).orElse(""),Optional.ofNullable(sale.getRegion()).orElse(""),
-		
-		  Optional.ofNullable(sale.getDate()).orElse(""),sale.getQuantite(), sale.getCost(),sale.getAmt(),sale.getTax(),sale.getTotal());
-  System.out.println(inclomeList.size());
-
-    }
-  else {
-	  System.out.println("badl");
-    	salesdb.updateSale(sale);
-    	
-    }
-    }
     fireTableCellUpdated(row,col);
-    System.out.println(inclomeList.size());
-
-
-    //`product`, `region`, `date`, `quantite`, `cost`, `amt`, `tax`, `total`
 }
-
     public Class getColumnClass(int c)
     {
         return getValueAt(0, c).getClass();

@@ -7,7 +7,8 @@ public class Utilitaire {
 	static{
 		try{ 
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection ("jdbc:mysql://localhost:3306/sysreparti","root","");
+			conn = DriverManager.getConnection ("jdbc:mysql://localhost:3306/BO1","root","");
+
 		}
 		catch(Exception e){ e.printStackTrace();
 		}
