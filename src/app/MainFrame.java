@@ -1,9 +1,9 @@
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+package app;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 
 	
 	
@@ -15,9 +15,11 @@ public class MainFrame extends JFrame {
     	
         super("MainFrame");
     
+        
         createGUI();
         
     }
+
 
     private void createGUI() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
