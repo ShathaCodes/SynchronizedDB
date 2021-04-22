@@ -3,7 +3,6 @@ package app;
 import java.util.Map;
 
 public class Sale {
-	
 	private int id;
 	private String product;
 	private String region;

@@ -24,6 +24,7 @@ public class BO2 {
 	private final static String QUEUE_NAME = "BO1";
 
 	  public static void main(String[] argv) throws Exception {
+		  
 		  Gson gson = new Gson();
 		  
 		  
