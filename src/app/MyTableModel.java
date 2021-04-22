@@ -5,12 +5,12 @@ import java.awt.Component;
 import java.lang.Object;
 import java.util.Optional;
 import javax.swing.table.*;
+
 import javax.swing.event.TableModelEvent;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.util.List;
-
 
 import java.util.ArrayList;
 
@@ -20,6 +20,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
   //
     private List<Sale> expenseList;
     private GestUsersDAO salesdb=new GestUsersDAO();
+
 
 
 
@@ -75,6 +76,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
             	return "ID";
             case 9: 
             	return "delete";
+
          /*   case 8:
             	return "Tax";
 
@@ -100,6 +102,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
     @Override
     public int getColumnCount() {
         return 10;
+
     }
 
     @Override
@@ -132,6 +135,7 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
             case 8: return inclome != null ? inclome.getId() : "";
 
             case 9: return "fasakh l ham";
+
 
            // case 8: return expense != null ? inclome.getTotal() : "";
 
@@ -200,16 +204,13 @@ public void setValueAt(Object value, int row, int col)
     {
         return getValueAt(0, c).getClass();
     }
-  
+
 
     public boolean isCellEditable(int row, int col)
     {
         return true;
     }
     
-
-   
-
     void tableChanged(TableModelEvent e)
     {Sale s=new Sale();
     s.setProduct("YEEES");

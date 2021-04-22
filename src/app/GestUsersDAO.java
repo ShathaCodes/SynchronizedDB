@@ -82,6 +82,7 @@ public class GestUsersDAO {
 			ps.executeUpdate();
 				
 			}
+
 			} catch (SQLException e2) { e2.printStackTrace();
 			}
 		}
