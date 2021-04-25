@@ -1,4 +1,4 @@
-package app;
+package HO;
 
 import java.sql.*;
 
@@ -7,7 +7,7 @@ public class Utilitaire {
 	static{
 		try{ 
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection ("jdbc:mysql://localhost:3306/BO1","root","enafadeet");
+			conn = DriverManager.getConnection ("jdbc:mysql://localhost:3306/ho","root","enafadeet");
 
 		}
 		catch(Exception e){ e.printStackTrace();

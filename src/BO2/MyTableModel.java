@@ -1,8 +1,9 @@
-package app;
+package BO2;
 
 import java.awt.Button;
 import java.awt.Component;
 import java.lang.Object;
+import java.sql.Connection;
 import java.util.Optional;
 import javax.swing.table.*;
 import javax.swing.event.TableModelEvent;
@@ -33,12 +34,12 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
         }
     }
 
-    public void setIncomeData(Sale sale) {
+    public void setIncomeData(Sale data) {
         if(inclomeList == null) {
             inclomeList = new ArrayList<>();
         }
 
-        setData(inclomeList, sale);
+        setData(inclomeList, data);
     }
     
     public List<Sale> getIncomeData() {
@@ -182,7 +183,8 @@ public void setValueAt(Object value, int row, int col)
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-            	inclomeList = salesdb.selectAll();
+            	
+                inclomeList = salesdb.selectAll();
                 return null;
             }
 
