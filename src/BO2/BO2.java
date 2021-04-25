@@ -1,13 +1,10 @@
-package app;
+package BO2;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -22,7 +19,7 @@ import com.rabbitmq.client.*;
 import com.rabbitmq.tools.json.JSONWriter;
 
 
-public class BO1 extends JFrame  {
+public class BO2 extends JFrame  {
 
     private static JTable table = new JTable(new MyTableModel());
 	private static GestUsersDAO bd = new GestUsersDAO();
@@ -30,9 +27,9 @@ public class BO1 extends JFrame  {
     
     ButtonC button = new ButtonC(table, 9);
      
-    public BO1() throws Exception {
+    public BO2() throws Exception {
     	
-        super("BO1");
+        super("BO2");
         createGUI();
     }
 
@@ -70,13 +67,12 @@ public class BO1 extends JFrame  {
 		factory.setHost("localhost");
 		try (com.rabbitmq.client.Connection connection = factory.newConnection();
 				Channel channel = connection.createChannel()) {
-			channel.queueDeclare("HO1", false, false, false, null);
+			channel.queueDeclare("HO2", false, false, false, null);
 			JSONWriter rabbitmqJson = new JSONWriter();
 			String jsonmessage = rabbitmqJson.write(((MyTableModel) table.getModel()).getIncomeData());
-			channel.basicPublish("", "HO1", null, jsonmessage.getBytes());
+			channel.basicPublish("", "HO2", null, jsonmessage.getBytes());
 			System.out.println(" [x] Sent '" + jsonmessage + "'");
 		}
-		
 		
     	
     }
@@ -113,13 +109,13 @@ private static void verif(Sale[] sales) {
 			}
 		}
 		((MyTableModel) table.getModel()).update();
+		
 	}
-	
 
     public static void main(String[] args) throws Exception{
         SwingUtilities.invokeLater(() -> {
 			try {
-				new BO1().setVisible(true);
+				new BO2().setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -132,7 +128,7 @@ private static void verif(Sale[] sales) {
 	    com.rabbitmq.client.Connection connection = factory.newConnection();
 	    Channel channel = connection.createChannel();
 
-	    channel.queueDeclare("BO1", false, false, false, null);
+	    channel.queueDeclare("BO2", false, false, false, null);
 	    System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 	    DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 	        String message = new String(delivery.getBody(), "UTF-8");
@@ -140,6 +136,6 @@ private static void verif(Sale[] sales) {
 	        verif(sales1);
 	        
 	    };
-	    channel.basicConsume("BO1", true, deliverCallback, consumerTag -> { });
+	    channel.basicConsume("BO2", true, deliverCallback, consumerTag -> { });
     }
 }
