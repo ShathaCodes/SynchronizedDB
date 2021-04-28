@@ -85,23 +85,15 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
         }
 
         switch (column) {
-      /*  Button b=new Button("Click Here");  
-        b.setBounds(50,100,80,30);  
-        f.add(b);  
-        f.setSize(400,400);  
-        f.setLayout(null);  
-        f.setVisible(true);   */
-            case 0: return inclome != null ? inclome.getId() : "";
-            case 1: return inclome != null ? inclome.getDate() : "";
-            case 2: return inclome != null ? inclome.getProduct() : "";
-            case 3: return inclome != null ? inclome.getAmt() : "";
-            case 4: return inclome != null ? inclome.getCost() : "";
-            case 5: return inclome  != null ? inclome.getQuantite() : "";
-            case 6: return inclome != null ? inclome.getRegion() : "";
-            case 7: return inclome  != null ? inclome.getTax() : "";
-            case 8: return inclome != null ? inclome.getTotal() : "";
-
-            //case 9: return "fasakh l ham";
+        case 0: return inclome != null ? inclome.getId() : null;
+        case 1: return inclome != null ? inclome.getDate() : null;
+        case 2: return inclome != null ? inclome.getProduct() : null;
+        case 3: return inclome != null ? inclome.getAmt() : null;
+        case 4: return inclome != null ? inclome.getCost() : null;
+        case 5: return inclome  != null ? inclome.getQuantite() : null;
+        case 6: return inclome != null ? inclome.getRegion() : null;
+        case 7: return inclome  != null ? inclome.getTax() : null;
+        case 8: return inclome != null ? inclome.getTotal() : null;
         }
 
         return null;
@@ -155,9 +147,6 @@ public void setValueAt(Object value, int row, int col)
     }
     fireTableCellUpdated(row,col);
     fireTableDataChanged();
-
-
-    //`product`, `region`, `date`, `quantite`, `cost`, `amt`, `tax`, `total`
 }
 
     public Class getColumnClass(int c)
@@ -171,19 +160,11 @@ public void setValueAt(Object value, int row, int col)
         return true;
     }
     
-    void tableChanged(TableModelEvent e)
-    {
-    	Sale s=new Sale();
-    s.setProduct("YEEES");
-    inclomeList.add(s);
-    
-    }
 
     public void update() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-            	
                 inclomeList = salesdb.selectAll();
                 return null;
             }

@@ -86,7 +86,6 @@ private static void verif(Sale[] sales) {
 			System.out.println(s.getProduct());
 			
         	Sale sale = bd.find(s.getId());
-        	//System.out.println(sale.getId());
         	if(sale == null) {
         		System.out.println("inseriiiii");
         		bd.addSale(s.getId(), s.getProduct(),s.getRegion() , s.getDate(), s.getQuantite(), s.getCost(), s.getAmt(),s.getTax(),s.getTotal());
@@ -97,7 +96,6 @@ private static void verif(Sale[] sales) {
         			bd.updateSale(s);
         	}
         }
-		System.out.println("lol");
 		Vector<Sale> sbd =  bd.selectAll();
 		System.out.println(sbd.get(1));
 		boolean there=false;
