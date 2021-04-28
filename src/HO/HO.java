@@ -18,24 +18,17 @@ public class HO {
 	
 	private static void verif(Sale[] sales) throws Exception{
 		
-		for(Sale s : sales) {
-			System.out.println(s.getProduct());
-			
+		for(Sale s : sales) {			
         	Sale sale = bd.find(s.getId());
-        	//System.out.println(sale.getId());
         	if(sale == null) {
-        		System.out.println("inseriiiii");
         		bd.addSale(s.getId(), s.getProduct(),s.getRegion() , s.getDate(), s.getQuantite(), s.getCost(), s.getAmt(),s.getTax(),s.getTotal());
         	}
         	else {
         		if (sale.hasChanged(s))
-        			System.out.println("tbadel");
         			bd.updateSale(s);
         	}
         }
-		System.out.println("lol");
 		Vector<Sale> sbd =  bd.selectAll();
-		System.out.println(sbd.get(1));
 		boolean there=false;
 		if (sbd.size() > sales.length) {
 			for ( Sale s : sbd) {

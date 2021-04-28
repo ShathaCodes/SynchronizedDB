@@ -69,8 +69,10 @@ public class Sale {
 	}
 	
 	public boolean hasChanged(Sale s) {
-		if(s.getAmt()==amt && s.getCost()==cost && s.getDate().equals(date) && s.getProduct().equals(product)&& s.getQuantite()==quantite && s.getRegion().equals(region) && s.getTax()==tax && s.getTotal()==total)
+		if(s.getAmt()==amt && s.getCost()==cost && s.getDate()==date && s.getProduct()==product&& s.getQuantite()==quantite && s.getRegion()==region && s.getTax()==tax && s.getTotal()==total)
+		
 		return false;
+		
 		return true;
 	}
 	

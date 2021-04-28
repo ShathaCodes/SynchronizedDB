@@ -5,28 +5,6 @@ import java.util.Vector;
 
 
 public class GestUsersDAO {
-	/*public Utilisateur loadUser(String login, String pass){ 
-		Connection conn=Utilitaire.getConnection();
-		Sale s=null;
-		try {
-			PreparedStatement ps=conn.prepareStatement("select * from `sales` where LOGIN=? and PASS=?");
-			ps.setString(1,login);
-			ps.setString(2,pass);
-			ResultSet rsUser=ps.executeQuery();
-			if(rsUser.next()){
-				u=new Utilisateur();
-				u.setIdUser(new Integer(rsUser.getInt("ID_USER")));
-				u.setLogin(rsUser.getString("LOGIN"));
-				u.setPass(rsUser.getString("PASS")); 
-				u.setEmail(rsUser.getString("EMAIL")); 
-				u.setVille(rsUser.getString("VILLE"));
-				u.setName(rsUser.getString("NAME"));
-				}
-			} catch (SQLException e) { e.printStackTrace();
-			
-			}
-		return u;
-		}*/
 	public Sale find(int id) {
 		Connection conn=Utilitaire.getConnection();
 		Sale s=null;
@@ -66,22 +44,12 @@ public class GestUsersDAO {
 		Connection conn=Utilitaire.getConnection();
 		Sale s=null;
 		try {
-			if (!date.isBlank())
-			{
+			
 			PreparedStatement ps=conn.prepareStatement("INSERT INTO `sales`(`ID`, `product`, `region`, `date`, `quantite`, `cost`, `amt`, `tax`, `total`) VALUES (?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1,id); ps.setString(2,product);ps.setString(3,region); ps.setString(4, date); ps.setInt(5,quantite);
 			ps.setDouble(6,cost); ps.setDouble(7,amt);ps.setDouble(8,tax); ps.setDouble(9, total); 
-			ps.executeUpdate();}
-			else
-			{
-				PreparedStatement ps=conn.prepareStatement("INSERT INTO `sales`(`ID`, `product`, `region`, `quantite`, `cost`, `amt`, `tax`, `total`) VALUES (?,?,?,?,?,?,?,?)");
-			ps.setInt(1,id); ps.setString(2,product);ps.setString(3,region);
-		//	ps.setString(4,); 
-			ps.setInt(4,quantite);
-			ps.setDouble(5,cost); ps.setDouble(6,amt);ps.setDouble(7,tax); ps.setDouble(8, total); 
 			ps.executeUpdate();
-				
-			}
+			
 
 			} catch (SQLException e2) { e2.printStackTrace();
 			}

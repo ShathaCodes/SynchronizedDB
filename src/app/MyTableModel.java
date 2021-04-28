@@ -90,15 +90,15 @@ public class MyTableModel extends AbstractTableModel implements TableModel {
         f.setSize(400,400);  
         f.setLayout(null);  
         f.setVisible(true);   */
-            case 0: return inclome != null ? inclome.getId() : "";
-            case 1: return inclome != null ? inclome.getDate() : "";
-            case 2: return inclome != null ? inclome.getProduct() : "";
-            case 3: return inclome != null ? inclome.getAmt() : "";
-            case 4: return inclome != null ? inclome.getCost() : "";
-            case 5: return inclome  != null ? inclome.getQuantite() : "";
-            case 6: return inclome != null ? inclome.getRegion() : "";
-            case 7: return inclome  != null ? inclome.getTax() : "";
-            case 8: return inclome != null ? inclome.getTotal() : "";
+            case 0: return inclome != null ? inclome.getId() : null;
+            case 1: return inclome != null ? inclome.getDate() : null;
+            case 2: return inclome != null ? inclome.getProduct() : null;
+            case 3: return inclome != null ? inclome.getAmt() : null;
+            case 4: return inclome != null ? inclome.getCost() : null;
+            case 5: return inclome  != null ? inclome.getQuantite() : null;
+            case 6: return inclome != null ? inclome.getRegion() : null;
+            case 7: return inclome  != null ? inclome.getTax() : null;
+            case 8: return inclome != null ? inclome.getTotal() : null;
 
             //case 9: return "fasakh l ham";
         }
